@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO OPTIMIZATION -->
+    <title>Akash Rajpoot | Tech Developer & Creative Designer</title>
+    <meta id="meta-description" name="description" content="Portfolio of Akash Rajpoot, a Computer Science student specializing in AI Automation, Backend Engineering, and Creative Visual Storytelling.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://akashrajpoot.dev">
+    <meta property="og:title" content="Akash Rajpoot | Portfolio">
+    <meta property="og:description" content="Bridging the gap between robust engineering and creative storytelling. Explore my technical projects and creative works.">
+    <meta property="og:image" content="akash-og.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Akash Rajpoot | Portfolio">
+    <meta name="twitter:description" content="Tech Developer & Creative Designer specialized in AI Automation.">
+
+    <!-- Performance: Preload & Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        dark: '#020617',
+                        accent: '#6366f1',
+                        creative: '#10b981',
+                        design: '#f43f5e'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-primary: #020617;
+            --bg-secondary: #0f172a;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --transition-speed: 0.5s;
+        }
+
+        .light-theme {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --text-main: #0f172a;
+            --text-dim: #475569;
+            --glass-bg: rgba(0, 0, 0, 0.03);
+            --glass-border: rgba(0, 0, 0, 0.08);
+        }
+
+        body { 
+            background-color: var(--bg-primary); 
+            color: var(--text-main); 
+            overflow-x: hidden;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        .glass { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid var(--glass-border); 
+            transition: background var(--transition-speed), border var(--transition-speed);
+        }
+
+        .text-dim { color: var(--text-dim); }
+        .bg-secondary { background-color: var(--bg-secondary); }
+
+        .nav-active { color: #6366f1; font-weight: 700; }
+        .nav-active::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; h: 2px; background: #6366f1; border-radius: 99px; box-shadow: 0 0 10px #6366f1; }
+        
+        .bg-orb { position: fixed; filter: blur(120px); border-radius: 999px; z-index: -1; opacity: 0.15; }
+        .section-hidden { display: none; }
+        .progress-bar { transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        .project-card, .creative-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .project-card:hover, .creative-card:hover { transform: translateY(-8px); border-color: rgba(99, 102, 241, 0.3); box-shadow: 0 20px 40px -20px rgba(99, 102, 241, 0.2); }
+        
+        /* Tool card specific hover */
+        .tool-card { transition: all 0.3s ease; }
+        .tool-card:hover { transform: scale(1.05); border-color: rgba(16, 185, 129, 0.3); box-shadow: 0 0 25px rgba(16, 185, 129, 0.15); }
+
+        .filter-btn-active { background: #6366f1 !important; color: white !important; border-color: #6366f1 !important; }
+
+        /* Modal Scroll Lock */
+        .modal-open { overflow: hidden; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--text-dim); opacity: 0.3; border-radius: 10px; }
+
+        /* Wall / Masonry Styles */
+        .creative-wall {
+            columns: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 768px) { .creative-wall { columns: 2; } }
+        @media (min-width: 1024px) { .creative-wall { columns: 3; } }
+        
+        .wall-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Device Frame Styling */
+        .device-frame {
+            border: 8px solid #1e293b;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Before/After Hover Effect */
+        .before-after-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .after-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .before-after-container:hover .after-img {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Decorative Background Orbs -->
+    <div class="bg-orb w-[40vw] h-[40vw] top-[-10%] left-[-10%] bg-indigo-600"></div>
+    <div class="bg-orb w-[30vw] h-[30vw] bottom-[-10%] right-[-10%] bg-emerald-600"></div>
+
+    <!-- HEADER -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300 py-4 px-6 md:px-12" id="main-header">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center font-bold text-white">A</div>
+                <span class="text-xl font-extrabold tracking-tight hidden sm:block">Akash Rajpoot</span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8">
+                <button onclick="showPage('home')" class="nav-btn relative text-sm font-medium hover:text-accent transition-colors nav-active" data-page="home">Home</button>
+                <button onclick="showPage('technical')" class="nav-btn relative text-sm font-medium hover:text-accent transition-colors" data-page="technical">Technical</button>
+                <button onclick="showPage('creative')" class="nav-btn relative text-sm font-medium hover:text-accent transition-colors" data-page="creative">Creative</button>
+                <button onclick="showPage('about')" class="nav-btn relative text-sm font-medium hover:text-accent transition-colors" data-page="about">About</button>
+                
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i id="theme-icon" data-lucide="moon" size="18"></i>
+                </button>
+            </nav>
+
+            <button class="md:hidden text-dim" onclick="toggleMobileMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="fixed inset-0 bg-dark/95 z-[60] flex flex-col items-center justify-center gap-8 transition-transform translate-x-full md:hidden">
+        <button class="absolute top-10 right-10 text-white" onclick="toggleMobileMenu()"><i data-lucide="x"></i></button>
+        <button onclick="showPage('home'); toggleMobileMenu()" class="text-3xl font-bold">Home</button>
+        <button onclick="showPage('technical'); toggleMobileMenu()" class="text-3xl font-bold">Technical</button>
+        <button onclick="showPage('creative'); toggleMobileMenu()" class="text-3xl font-bold">Creative</button>
+        <button onclick="showPage('about'); toggleMobileMenu()" class="text-3xl font-bold">About</button>
+        <button onclick="toggleTheme(); toggleMobileMenu()" class="text-xl font-bold flex items-center gap-2"><i data-lucide="sun"></i> Switch Theme</button>
+    </div>
+
+    <!-- PAGE: HOME -->
+    <main id="page-home" class="page-content container mx-auto px-6 pt-32 pb-20" aria-label="Home Section">
+        <!-- Hero Section -->
+        <div class="flex flex-col md:flex-row items-center gap-12 mb-16 min-h-[70vh]">
+            <div class="flex-1 text-center md:text-left" data-aos="fade-right">
+                <span class="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-bold mb-6 border border-accent/20">Computer Science Student</span>
+                <h1 class="text-5xl md:text-8xl font-black mb-6 leading-[1.1]">
+                    Hi, I'm <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-emerald-400">Akash.</span>
+                </h1>
+                <p class="text-xl text-dim mb-2 max-w-xl mx-auto md:mx-0 font-medium">
+                    I build <span class="text-accent">intelligent systems</span> and craft <span class="text-creative">cinematic stories</span>. Specializing in AI Automation and Backend development.
+                </p>
+                <!-- HOME PAGE UPGRADE: Credibility strip -->
+                <div class="mb-10">
+                    <p class="text-[11px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-2">Currently pursuing B.Tech (Computer Science) • Building AI & Creative Systems</p>
+                    <p class="text-[9px] font-black text-slate-600 uppercase tracking-[0.3em]">ACTIVELY SEEKING INTERNSHIPS AND REAL-WORLD EXPOSURE</p>
+                </div>
+                
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                    <button onclick="showPage('technical')" class="px-8 py-4 bg-accent hover:bg-indigo-500 rounded-2xl font-bold transition-all hover:-translate-y-1 shadow-2xl shadow-accent/40 flex items-center gap-2 text-white">
+                        Technical Work <i data-lucide="terminal" size="18"></i>
+                    </button>
+                    <button onclick="showPage('creative')" class="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl font-bold transition-all hover:-translate-y-1 flex items-center gap-2">
+                        Creative Work <i data-lucide="palette" size="18"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="flex-1 flex justify-center" data-aos="zoom-in">
+                <div class="relative group">
+                    <div class="absolute -inset-2 bg-gradient-to-r from-accent to-emerald-500 rounded-[3rem] blur-xl opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                    <img loading="lazy" src="file_00000000b7a07208b7dcda182ed64f1b.png" alt="Akash" class="relative w-64 md:w-96 aspect-square rounded-[3rem] border border-white/10 glass object-cover">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Hint -->
+        <div class="text-center mb-32 animate-bounce opacity-50" data-aos="fade-up">
+            <p class="text-xs font-bold uppercase tracking-widest text-dim">Scroll to explore how logic meets storytelling ↓</p>
+        </div>
+
+        <!-- What I Do Section -->
+        <div class="grid md:grid-cols-2 gap-8 mb-32">
+            <div onclick="showPage('technical')" class="glass p-10 rounded-[2.5rem] cursor-pointer group hover:bg-white/5 transition-all" data-aos="fade-up">
+                <div class="w-14 h-14 bg-accent/20 rounded-2xl flex items-center justify-center text-accent mb-8 group-hover:scale-110 transition-transform">
+                    <i data-lucide="code-2" size="32"></i>
+                </div>
+                <h3 class="text-3xl font-bold mb-4">Technical Engineering</h3>
+                <p class="text-dim text-lg leading-relaxed mb-8">Backend architecture, AI agents, and automated software testing tools.</p>
+                <div class="flex items-center gap-2 text-accent font-bold">Explore My Stack <i data-lucide="arrow-right"></i></div>
+            </div>
+
+            <div onclick="showPage('creative')" class="glass p-10 rounded-[2.5rem] cursor-pointer group hover:bg-white/5 transition-all" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-14 h-14 bg-creative/20 rounded-2xl flex items-center justify-center text-creative mb-8 group-hover:scale-110 transition-transform">
+                    <i data-lucide="video" size="32"></i>
+                </div>
+                <h3 class="text-3xl font-bold mb-4">Creative Direction</h3>
+                <p class="text-dim text-lg leading-relaxed mb-8">Visual storytelling through cinematic video editing and user-centric design.</p>
+                <div class="flex items-center gap-2 text-creative font-bold">View Creative Reel <i data-lucide="arrow-right"></i></div>
+            </div>
+        </div>
+
+        <!-- Animated Counters -->
+        <div class="text-center" id="counters">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <div class="glass p-8 rounded-3xl" data-aos="zoom-in" data-aos-delay="0">
+                    <div class="text-4xl font-extrabold mb-2" data-target="21">0</div>
+                    <div class="text-xs uppercase tracking-widest text-dim font-bold">Projects Built</div>
+                </div>
+                <div class="glass p-8 rounded-3xl" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-4xl font-extrabold mb-2" data-target="5">0</div>
+                    <div class="text-xs uppercase tracking-widest text-dim font-bold">Hackathons</div>
+                </div>
+                <div class="glass p-8 rounded-3xl" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-4xl font-extrabold mb-2" data-target="300">0</div>
+                    <div class="text-xs uppercase tracking-widest text-dim font-bold">Problems Solved</div>
+                </div>
+                <div class="glass p-8 rounded-3xl" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-4xl font-extrabold mb-2" data-target="10">0</div>
+                    <div class="text-xs uppercase tracking-widest text-dim font-bold">Certifications</div>
+                </div>
+            </div>
+            <div class="space-y-2" data-aos="fade-up">
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Projects across AI, Web, Security & Creative Media</p>
+                <p class="text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em]">Interested in internships • startups • creators • agencies</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- PAGE: TECHNICAL -->
+    <main id="page-technical" class="page-content container mx-auto px-6 pt-32 pb-20 section-hidden" aria-label="Technical Projects and Experience">
+        <div class="text-center mb-16" data-aos="fade-down">
+            <h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter">Technical Portfolio</h2>
+            <div class="flex flex-col items-center gap-3 mt-8">
+                <a href="akash_rajpoot_resume.pdf" download="akash_rajpoot_resume.pdf" class="px-8 py-3 bg-accent hover:bg-indigo-500 rounded-xl font-bold transition-all shadow-xl shadow-accent/20 flex items-center gap-2 text-white">
+                    <i data-lucide="download" size="18"></i> Download CV
+                </a>
+                <!-- TECHNICAL PAGE UPGRADE: Resume Trust Signal -->
+                <p class="text-[10px] text-slate-500 opacity-60 font-bold uppercase tracking-widest">Updated for 2025 • Internship & Entry-Level Roles</p>
+            </div>
+        </div>
+
+        <section class="mb-24 px-6 md:px-12 py-10 glass rounded-[3rem] border border-white/5" data-aos="fade-up">
+    <h3 class="text-xl font-black uppercase tracking-widest text-dim mb-8 text-center">Tech Stack Snapshot</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <!-- Languages -->
+        <div>
+            <span class="text-xs font-black text-accent uppercase block mb-3">Languages</span>
+            <div class="flex flex-wrap gap-2">
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <img src="https://cdn.simpleicons.org/python/white" class="w-3 h-3" alt=""> Python
+                </span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <img src="https://cdn.simpleicons.org/cplusplus/white" class="w-3 h-3" alt=""> C++
+                </span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <img src="https://cdn.simpleicons.org/javascript/white" class="w-3 h-3" alt=""> JavaScript
+                </span>
+            </div>
+        </div>
+
+        <!-- AI / ML -->
+        <div>
+            <span class="text-xs font-black text-accent uppercase block mb-3">AI / ML</span>
+            <div class="flex flex-wrap gap-2">
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .52 8.105V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a4 4 0 0 0 .52-8.105 4 4 0 0 0-2.526-5.77A3 3 0 1 0 12 5"/><path d="M12 13V5"/><path d="M12 13a4 4 0 1 0 0 8"/><path d="M12 13a4 4 0 1 1 0 8"/></svg> NLP
+                </span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg> LLM APIs
+                </span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M12 11V8"/></svg> CNN
+                </span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> Agents
+                </span>
+            </div>
+        </div>
+
+        <!-- Web / Backend -->
+        <div>
+            <span class="text-xs font-black text-accent uppercase block mb-3">Web / Backend</span>
+            <div class="flex flex-wrap gap-2">
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <img src="https://cdn.simpleicons.org/html5/white" class="w-3 h-3" alt=""> HTML/CSS
+                </span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg> SQL
+                </span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <img src="https://cdn.simpleicons.org/tailwindcss/white" class="w-3 h-3" alt=""> Tailwind
+                </span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-webhook"><path d="M18 16.98h-5.99c-1.1 0-1.95.94-2.48 1.9a4 4 0 1 1-5.14-5.58c.97-.36 2.03-.2 3.01.3"/><path d="M14 10V5a2 2 0 0 0-2-2 4 4 0 0 1 0 8"/><path d="M14 10a5 5 0 1 1 10 0 4 4 0 1 0-3 3.35"/><path d="M11 18h3"/></svg> REST APIs
+                </span>
+            </div>
+        </div>
+
+        <!-- Tools -->
+        <div>
+            <span class="text-xs font-black text-accent uppercase block mb-3">Tools</span>
+            <div class="flex flex-wrap gap-2">
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <img src="https://cdn.simpleicons.org/git/white" class="w-3 h-3" alt=""> Git
+                </span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <img src="https://cdn.simpleicons.org/github/white" class="w-3 h-3" alt=""> GitHub
+                </span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <img src="https://cdn.simpleicons.org/linux/white" class="w-3 h-3" alt=""> Linux
+                </span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold border border-white/5 uppercase">
+                    <img src="https://cdn.simpleicons.org/visualstudiocode/white" class="w-3 h-3" alt=""> VS Code
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+        <section class="mb-24">
+            <div class="flex items-center gap-3 mb-10">
+                <div class="w-10 h-1 h-px bg-accent/30 flex-grow"></div>
+                <h3 class="text-2xl font-bold uppercase tracking-widest text-dim">Featured High-Impact Projects</h3>
+                <div class="w-10 h-1 h-px bg-accent/30 flex-grow"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="glass p-8 rounded-[2rem] border-t-2 border-accent/40 relative overflow-hidden group hover:bg-accent/[0.03] transition-all" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1516534775068-bb4aa67bda27?w=400&h=250&fit=crop" alt="AI Testing Automation" class="w-full h-40 object-cover rounded-lg mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="flex justify-between items-start mb-6">
+                        <i data-lucide="cpu" class="text-accent" size="32"></i>
+                        <span class="text-[10px] px-3 py-1 bg-accent/10 text-accent rounded-full font-black uppercase tracking-widest">Internship Focus</span>
+                    </div>
+                    <h4 class="text-2xl font-black mb-4 tracking-tighter uppercase">AI-Driven Automated Testing</h4>
+                    <p class="text-sm text-dim mb-4 leading-relaxed"><span class="font-bold text-accent">Problem:</span> Manual script maintenance for dynamic UIs consumed 60% of engineering bandwidth.</p>
+                    <p class="text-sm text-dim mb-6 leading-relaxed"><span class="font-bold text-accent">Solution:</span> Integrated LLMs with NLP to dynamically detect DOM elements from plain English instructions.</p>
+                    <div class="p-4 bg-accent/5 rounded-2xl border border-accent/10 mb-4">
+                        <span class="text-xs text-dim uppercase tracking-widest block mb-1">Impact Metric</span>
+                        <span class="text-xl font-black text-accent">40% Reduction in Maintenance</span>
+                    </div>
+                    <p class="text-[11px] font-bold text-slate-500 uppercase tracking-tighter italic">Key Learning: Mastered the integration of LLMs with NLP for robust, self-healing DOM manipulation logic.</p>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="glass p-8 rounded-[2rem] border-t-2 border-emerald-400/40 relative overflow-hidden group hover:bg-emerald-400/[0.03] transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1584622181563-430f63602d4b?w=400&h=250&fit=crop" alt="Smart Fridge Vision System" class="w-full h-40 object-cover rounded-lg mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="flex justify-between items-start mb-6">
+                        <i data-lucide="cloud" class="text-emerald-400" size="32"></i>
+                        <span class="text-[10px] px-3 py-1 bg-emerald-400/10 text-emerald-400 rounded-full font-black uppercase tracking-widest">AI + IoT</span>
+                    </div>
+                    <h4 class="text-2xl font-black mb-4 tracking-tighter uppercase">Smart Fridge Vision System</h4>
+                    <p class="text-sm text-dim mb-4 leading-relaxed"><span class="font-bold text-emerald-400">Problem:</span> Domestic food waste occurs largely due to poor manual tracking of perishables.</p>
+                    <p class="text-sm text-dim mb-6 leading-relaxed"><span class="font-bold text-emerald-400">Solution:</span> Vision-based inventory system with recipe auto-suggestion via external API mapping.</p>
+                    <div class="p-4 bg-emerald-400/5 rounded-2xl border border-emerald-400/10 mb-4">
+                        <span class="text-xs text-dim uppercase tracking-widest block mb-1">Impact Metric</span>
+                        <span class="text-xl font-black text-emerald-400">Zero-Manual-Input Inventory</span>
+                    </div>
+                    <p class="text-[11px] font-bold text-slate-500 uppercase tracking-tighter italic">Key Learning: Gained deep expertise in asynchronous API handling and vision-to-recipe logic mapping.</p>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="glass p-8 rounded-[2rem] border-t-2 border-indigo-400/40 relative overflow-hidden group hover:bg-indigo-400/[0.03] transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06a6b1ef94f?w=400&h=250&fit=crop" alt="ML Fake News Detection" class="w-full h-40 object-cover rounded-lg mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="flex justify-between items-start mb-6">
+                        <i data-lucide="shield-check" class="text-indigo-400" size="32"></i>
+                        <span class="text-[10px] px-3 py-1 bg-indigo-400/10 text-indigo-400 rounded-full font-black uppercase tracking-widest">AI / ML</span>
+                    </div>
+                    <h4 class="text-2xl font-black mb-4 tracking-tighter uppercase">ML Fake News Detector</h4>
+                    <p class="text-sm text-dim mb-4 leading-relaxed"><span class="font-bold text-indigo-400">Problem:</span> Misinformation spreads faster than humans can verify, leading to social friction.</p>
+                    <p class="text-sm text-dim mb-6 leading-relaxed"><span class="font-bold text-indigo-400">Solution:</span> NLP pipeline using Passive-Aggressive Classifiers trained on 20k+ datasets.</p>
+                    <div class="p-4 bg-indigo-400/5 rounded-2xl border border-indigo-400/10 mb-4">
+                        <span class="text-xs text-dim uppercase tracking-widest block mb-1">Impact Metric</span>
+                        <span class="text-xl font-black text-indigo-400">92.4% Detection Accuracy</span>
+                    </div>
+                    <p class="text-[11px] font-bold text-slate-500 uppercase tracking-tighter italic">Key Learning: Optimized model performance by refining feature extraction from noisy linguistic data.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- New: How I Build Systems -->
+        <section class="mb-24 px-6 md:px-12 py-10 glass rounded-[3rem] border border-white/5" data-aos="fade-up">
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-xl font-black uppercase tracking-widest text-dim mb-8">How I Build Systems</h3>
+                <ul class="grid md:grid-cols-2 gap-6 text-sm text-dim">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="text-accent shrink-0 mt-1" size="18"></i>
+                        <span>I prioritize scalable and maintainable solutions over quick fixes for long-term project health.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="text-accent shrink-0 mt-1" size="18"></i>
+                        <span>I automate repetitive workflows wherever possible to focus human effort on high-level logic.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="text-accent shrink-0 mt-1" size="18"></i>
+                        <span>I refactor and document as systems evolve to ensure modularity and ease of collaboration.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="text-accent shrink-0 mt-1" size="18"></i>
+                        <span>I focus on clarity, performance, and long-term usability for both developers and end-users.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- New: Problem Domains -->
+        <section class="mb-24" data-aos="fade-up">
+            <h3 class="text-xl font-black uppercase tracking-widest text-dim mb-8 text-center">Problem Domains I've Worked On</h3>
+            <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+                <span class="px-6 py-3 glass rounded-2xl text-xs font-bold border border-white/5 uppercase tracking-widest">AI Automation</span>
+                <span class="px-6 py-3 glass rounded-2xl text-xs font-bold border border-white/5 uppercase tracking-widest">NLP Systems</span>
+                <span class="px-6 py-3 glass rounded-2xl text-xs font-bold border border-white/5 uppercase tracking-widest">Security & Detection</span>
+                <span class="px-6 py-3 glass rounded-2xl text-xs font-bold border border-white/5 uppercase tracking-widest">Data Dashboards</span>
+                <span class="px-6 py-3 glass rounded-2xl text-xs font-bold border border-white/5 uppercase tracking-widest">Consumer Web Applications</span>
+            </div>
+        </section>
+
+        <!-- Visual Context Line for Projects -->
+        <div class="text-center mb-10 opacity-60" data-aos="fade-up">
+            <p class="text-[10px] font-black uppercase tracking-[0.3em] text-dim">Showing 10 of 21 curated projects • Most impactful work highlighted</p>
+        </div>
+
+        <div id="projects-container" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 min-h-[400px]"></div>
+
+        <!-- TECHNICAL PAGE UPGRADE: Micro Credibility Line -->
+        <div class="text-center mt-16 opacity-50" data-aos="fade-up">
+            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-dim">Code quality over quantity • Clean commits • Documented logic</p>
+            <p class="text-[9px] font-bold text-slate-600 uppercase tracking-[0.2em] mt-2">All public projects are available on GitHub with complete documentation.</p>
+        </div>
+    </main>
+
+    <!-- PAGE: CREATIVE -->
+    <main id="page-creative" class="page-content container mx-auto px-6 pt-32 pb-20 section-hidden" aria-label="Creative Visual Studio">
+        
+        <!-- Header -->
+        <div class="text-center mb-12" data-aos="fade-down">
+            <span class="text-xs font-black uppercase tracking-[0.4em] text-creative mb-4 block">Visual Storyteller & Artist</span>
+            <h2 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">Creative Studio</h2>
+            <!-- CREATIVE PAGE UPGRADE: Intent philosophy strip -->
+            <p class="text-sm font-bold text-slate-400 uppercase tracking-widest max-w-2xl mx-auto mt-6">I use creativity to simplify ideas, evoke emotion, and make technology feel human.</p>
+        </div>
+        
+        <div class="max-w-2xl mx-auto text-center mb-20 px-8 py-6 glass rounded-3xl border border-white/5" data-aos="fade-up">
+            <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">My creative work focuses on emotion, pacing, and clarity. Whether it’s a reel, a UI, or motion graphics — the goal is always impact.</p>
+        </div>
+
+        <!-- Primary Creative Walls (Initially Shown) -->
+        <div id="primary-creative-walls">
+            <!-- 1. Video Editing & Reels Wall -->
+            <section class="mb-32">
+                <div class="flex items-center gap-4 mb-12">
+                    <h3 class="text-3xl font-black uppercase tracking-tighter">Video & Reels Wall</h3>
+                    <div class="h-px bg-white/10 flex-grow"></div>
+                    <i data-lucide="clapperboard" class="text-creative"></i>
+                </div>
+                <div id="video-gallery-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"></div>
+                <div id="video-view-more-btn" class="flex justify-center mb-8">
+                    <button onclick="toggleVideoGallery()" class="px-8 py-3 glass hover:bg-creative/10 rounded-2xl font-bold uppercase tracking-widest text-xs transition-all flex items-center gap-2 group">
+                        <span id="video-more-text">View More Videos</span>
+                        <i data-lucide="chevron-down" class="group-hover:translate-y-1 transition-transform" id="video-more-icon"></i>
+                    </button>
+                </div>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <a href="https://www.youtube.com/@daily_vibe_1" target="_blank" class="px-6 py-3 bg-red-600 hover:bg-red-700 rounded-xl font-bold transition-all flex items-center gap-2 text-white">
+                        <i data-lucide="youtube"></i> Daily Vibe
+                    </a>
+                    <a href="https://www.youtube.com/@love_note_official" target="_blank" class="px-6 py-3 bg-red-600 hover:bg-red-700 rounded-xl font-bold transition-all flex items-center gap-2 text-white">
+                        <i data-lucide="youtube"></i> Love Note
+                    </a>
+                </div>
+            </section>
+
+            <!-- 2. Photo Editing Wall -->
+            <section class="mb-32">
+                <div class="flex items-center gap-4 mb-12">
+                    <i data-lucide="camera" class="text-creative"></i>
+                    <h3 class="text-3xl font-black uppercase tracking-tighter">Photo Editing Wall</h3>
+                    <div class="h-px bg-white/10 flex-grow"></div>
+                </div>
+                <div id="photo-gallery-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8"></div>
+                <div id="photo-view-more-btn" class="flex justify-center">
+                    <button onclick="togglePhotoGallery()" class="px-8 py-3 glass hover:bg-creative/10 hover:border-creative/40 rounded-2xl font-bold uppercase tracking-widest text-xs transition-all flex items-center gap-2 group">
+                        <span id="photo-more-text">View All Photos</span>
+                        <i data-lucide="chevron-down" class="group-hover:translate-y-1 transition-transform" id="photo-more-icon"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 3. Gen Song Wall -->
+            <section class="mb-12">
+                <div class="flex items-center gap-4 mb-12">
+                    <h3 class="text-3xl font-black uppercase tracking-tighter">Gen Song</h3>
+                    <div class="h-px bg-white/10 flex-grow"></div>
+                    <i data-lucide="music" class="text-design"></i>
+                </div>
+                <div id="song-gallery-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"></div>
+                <div id="song-view-more-btn" class="flex justify-center">
+                    <button onclick="toggleSongGallery()" class="px-8 py-3 glass hover:bg-design/10 rounded-2xl font-bold uppercase tracking-widest text-xs transition-all flex items-center gap-2 group">
+                        <span id="song-more-text">View More Songs</span>
+                        <i data-lucide="chevron-down" class="group-hover:translate-y-1 transition-transform" id="song-more-icon"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 4. YouTube Channels -->
+            <section class="mb-32">
+                <div class="flex items-center gap-4 mb-12">
+                    <i data-lucide="youtube" class="text-red-600"></i>
+                    <h3 class="text-3xl font-black uppercase tracking-tighter">YouTube Channels</h3>
+                    <div class="h-px bg-white/10 flex-grow"></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Daily Vibe Channel Card -->
+                    <div class="glass rounded-3xl overflow-hidden group hover:border-red-500/50 transition-all" data-aos="fade-up">
+                        <div class="relative aspect-video overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800">
+                            <img src="Screenshot 2026-02-09 081520.png" alt="Daily Vibe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <i data-lucide="youtube" class="text-red-600 w-16 h-16 opacity-80"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-orange-500 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="music" class="text-white w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-2xl font-black uppercase tracking-tight">Daily Vibe</h4>
+                                    <p class="text-xs text-dim font-bold">Music Channel</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-300 font-medium leading-relaxed mb-6">
+                                Daily Vibe is an emotional music channel featuring romantic, sad, lo-fi, and heart-touching Hindi songs. Created for listeners who love to connect with deep emotions and feelings through music. Every song is presented with a unique story and a strong emotional vibe.
+                            </p>
+                            <div class="mb-6">
+                                <p class="text-[10px] font-black text-dim uppercase tracking-widest mb-3">Content Types</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-red-600/20 text-red-400 rounded-full text-[9px] font-bold uppercase tracking-wider">Romantic Hindi</span>
+                                    <span class="px-3 py-1 bg-red-600/20 text-red-400 rounded-full text-[9px] font-bold uppercase tracking-wider">Sad & Emotional</span>
+                                    <span class="px-3 py-1 bg-red-600/20 text-red-400 rounded-full text-[9px] font-bold uppercase tracking-wider">Lo-Fi Music</span>
+                                    <span class="px-3 py-1 bg-red-600/20 text-red-400 rounded-full text-[9px] font-bold uppercase tracking-wider">Lyric Videos</span>
+                                </div>
+                            </div>
+                            <a href="https://www.youtube.com/@daily_vibe_1" target="_blank" class="w-full px-6 py-3 bg-red-600 hover:bg-red-700 rounded-xl font-bold uppercase tracking-widest text-xs transition-all flex items-center justify-center gap-2 text-white">
+                                <i data-lucide="external-link" size="16"></i> Visit Channel
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Love Note Channel Card -->
+                    <div class="glass rounded-3xl overflow-hidden group hover:border-blue-500/50 transition-all" data-aos="fade-up">
+                        <div class="relative aspect-video overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800">
+                            <img src="Screenshot 2026-02-09 081552.png" alt="Love Note" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <i data-lucide="youtube" class="text-red-600 w-16 h-16 opacity-80"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-600 to-purple-500 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="heart" class="text-white w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-2xl font-black uppercase tracking-tight">Love Note</h4>
+                                    <p class="text-xs text-dim font-bold">Music Channel</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-300 font-medium leading-relaxed mb-6">
+                                Love Note is a soulful English music channel featuring romantic, sad, and indie-vibe songs. Perfect for late-night listeners and deep-feeling music lovers. Minimal visuals combined with strong emotions define the identity of this channel.
+                            </p>
+                            <div class="mb-6">
+                                <p class="text-[10px] font-black text-dim uppercase tracking-widest mb-3">Content Types</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-[9px] font-bold uppercase tracking-wider">English Romance</span>
+                                    <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-[9px] font-bold uppercase tracking-wider">Sad Indie</span>
+                                    <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-[9px] font-bold uppercase tracking-wider">Emotional Love</span>
+                                    <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-[9px] font-bold uppercase tracking-wider">Night Vibe</span>
+                                </div>
+                            </div>
+                            <a href="https://www.youtube.com/@love_note_official" target="_blank" class="w-full px-6 py-3 bg-red-600 hover:bg-red-700 rounded-xl font-bold uppercase tracking-widest text-xs transition-all flex items-center justify-center gap-2 text-white">
+                                <i data-lucide="external-link" size="16"></i> Visit Channel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- View More Creative Button -->
+        <div class="flex justify-center mb-32" data-aos="fade-up">
+            <button id="view-more-creative-btn" onclick="toggleCreativeExpansion()" class="px-10 py-4 glass hover:bg-accent/10 hover:border-accent/40 rounded-2xl font-black uppercase tracking-[0.2em] text-xs transition-all flex items-center gap-3 group">
+                <span id="view-more-text">View More Creative Work</span>
+                <i data-lucide="chevron-down" class="group-hover:translate-y-1 transition-transform" id="view-more-icon"></i>
+            </button>
+        </div>
+
+        <!-- Hidden Creative Sections -->
+        <div id="extended-creative-sections" class="section-hidden">
+            <!-- 4. UI/UX Design Wall -->
+            <section class="mb-32">
+                <div class="flex items-center gap-4 mb-12">
+                    <i data-lucide="layout" class="text-accent"></i>
+                    <h3 class="text-3xl font-black uppercase tracking-tighter">UI / UX Design Wall</h3>
+                    <div class="h-px bg-white/10 flex-grow"></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="p-8 glass rounded-[3rem] group hover:bg-accent/[0.03] transition-colors">
+                        <div class="device-frame overflow-hidden bg-slate-900 aspect-video mb-8">
+                            <img src="https://images.unsplash.com/photo-1551288049-bbbda5366392?w=800" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-2xl font-black tracking-tight mb-2 uppercase">EduNextGen Web Portal</h4>
+                        <p class="text-xs text-dim font-bold uppercase tracking-widest mb-1">Type: Web App Dashboard • Focus: Data Visualization & Accessibility</p>
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Purpose: Modular Learning Management • Tools: Figma</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Motion Graphics Wall -->
+            <section class="mb-32">
+                <div class="flex items-center gap-4 mb-12">
+                    <h3 class="text-3xl font-black uppercase tracking-tighter">Motion Graphics & Animation</h3>
+                    <div class="h-px bg-white/10 flex-grow"></div>
+                    <i data-lucide="zap" class="text-design"></i>
+                </div>
+                <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-10 text-center">Short-form motion graphics created using After Effects for branding and storytelling.</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="glass p-6 rounded-3xl text-center group cursor-pointer" onclick="openMotionModal('Logo Reveal')">
+                        <div class="w-full aspect-square bg-slate-800/50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-design/10 transition-all">
+                            <i data-lucide="clapperboard" class="text-design opacity-30 group-hover:opacity-100"></i>
+                        </div>
+                        <h5 class="font-bold text-sm tracking-widest uppercase">Logo Animation</h5>
+                        <span class="text-[9px] text-dim uppercase font-black">Tool: After Effects</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Music & YouTube Creation -->
+            <section class="mb-32">
+                <div class="flex items-center gap-4 mb-12">
+                    <i data-lucide="youtube" class="text-design"></i>
+                    <h3 class="text-3xl font-black uppercase tracking-tighter">Music & YouTube Wall</h3>
+                    <div class="h-px bg-white/10 flex-grow"></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="glass p-8 rounded-[3rem] flex gap-6 items-center group cursor-pointer">
+                        <div class="w-24 h-24 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+                            <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=200" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i data-lucide="play" class="text-white fill-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold uppercase tracking-tight">Original Composition</h4>
+                            <p class="text-sm text-dim">Genre: Lofi / Ambient • Role: Composer & Publisher • Platform: YouTube</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. Creative Stack -->
+            <section class="mb-32 text-center">
+                <h4 class="text-sm font-bold uppercase tracking-[0.3em] text-dim mb-2">Mastered Creative Suite</h4>
+                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-12">Used in real-world production projects</p>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <div class="p-6 glass rounded-[2rem] text-center hover:scale-110 hover:border-creative/50 transition-all">
+                        <i data-lucide="video" class="text-creative mx-auto mb-2"></i>
+                        <span class="text-[10px] font-bold block uppercase tracking-tighter">Premiere Pro</span>
+                    </div>
+                    <div class="p-6 glass rounded-[2rem] text-center hover:scale-110 hover:border-design/50 transition-all">
+                        <i data-lucide="zap" class="text-design mx-auto mb-2"></i>
+                        <span class="text-[10px] font-bold block uppercase tracking-tighter">After Effects</span>
+                    </div>
+                    <div class="p-6 glass rounded-[2rem] text-center hover:scale-110 hover:border-accent/50 transition-all">
+                        <i data-lucide="layout" class="text-accent mx-auto mb-2"></i>
+                        <span class="text-[10px] font-bold block uppercase tracking-tighter">Figma</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NEW: Creative Tools & Production Stack -->
+            <section class="mb-32 px-6 md:px-12 py-20 glass rounded-[3rem] border border-white/5" data-aos="fade-up">
+                <h3 class="text-2xl md:text-3xl font-black uppercase tracking-tighter mb-16 text-center">Creative Tools & Production Stack</h3>
+                
+                <!-- 1. Video & Design Suite -->
+                <div class="mb-16">
+                    <h4 class="text-[10px] font-black text-accent uppercase tracking-[0.4em] mb-8 text-center md:text-left border-l-2 border-accent pl-4">Professional Video & Design Suite</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-accent mb-4"><i data-lucide="clapperboard"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">Premiere Pro</span>
+                            <span class="text-[9px] text-dim uppercase font-black">Video Editing</span>
+                        </div>
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-accent mb-4"><i data-lucide="zap"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">After Effects</span>
+                            <span class="text-[9px] text-dim uppercase font-black">Motion & VFX</span>
+                        </div>
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-accent mb-4"><i data-lucide="image"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">Photoshop</span>
+                            <span class="text-[9px] text-dim uppercase font-black">Image Editing</span>
+                        </div>
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-accent mb-4"><i data-lucide="pen-tool"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">Illustrator</span>
+                            <span class="text-[9px] text-dim uppercase font-black">Vector Graphics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Advanced Editing & UI -->
+                <div class="mb-16">
+                    <h4 class="text-[10px] font-black text-creative uppercase tracking-[0.4em] mb-8 text-center md:text-left border-l-2 border-creative pl-4">Advanced Editing & UI Design</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-creative mb-4"><i data-lucide="layers"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">DaVinci Resolve</span>
+                            <span class="text-[9px] text-dim uppercase font-black">Color Grading</span>
+                        </div>
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-creative mb-4"><i data-lucide="layout"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">Figma</span>
+                            <span class="text-[9px] text-dim uppercase font-black">UI/UX Design</span>
+                        </div>
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-creative mb-4"><i data-lucide="palette"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">Canva</span>
+                            <span class="text-[9px] text-dim uppercase font-black">Social Creative</span>
+                        </div>
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-creative mb-4"><i data-lucide="videotape"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">Animaker</span>
+                            <span class="text-[9px] text-dim uppercase font-black">2D Animation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Audio & AI -->
+                <div class="mb-16">
+                    <h4 class="text-[10px] font-black text-design uppercase tracking-[0.4em] mb-8 text-center md:text-left border-l-2 border-design pl-4">Audio, Music & AI Enhancement</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-design mb-4"><i data-lucide="music-2"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">Suno AI</span>
+                            <span class="text-[9px] text-dim uppercase font-black">AI Music Gen</span>
+                        </div>
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-design mb-4"><i data-lucide="cloud-lightning"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">SoundCloud</span>
+                            <span class="text-[9px] text-dim uppercase font-black">Audio Hosting</span>
+                        </div>
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-design mb-4"><i data-lucide="mic-2"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">Adobe Podcast</span>
+                            <span class="text-[9px] text-dim uppercase font-black">AI Audio Cleanup</span>
+                        </div>
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-design mb-4"><i data-lucide="text-cursor-input"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">Descript</span>
+                            <span class="text-[9px] text-dim uppercase font-black">Text-Based Editing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Collab & Productivity -->
+                <div>
+                    <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-8 text-center md:text-left border-l-2 border-slate-600 pl-4">Collaboration & Productivity</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-dim mb-4"><i data-lucide="message-square"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">Frame.io</span>
+                            <span class="text-[9px] text-dim uppercase font-black">Video Review</span>
+                        </div>
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-dim mb-4"><i data-lucide="users"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">MS Teams</span>
+                            <span class="text-[9px] text-dim uppercase font-black">Communication</span>
+                        </div>
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-dim mb-4"><i data-lucide="slack"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">Slack</span>
+                            <span class="text-[9px] text-dim uppercase font-black">Collaboration</span>
+                        </div>
+                        <div class="tool-card glass p-6 rounded-2xl flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-dim mb-4"><i data-lucide="file-text"></i></div>
+                            <span class="text-sm font-bold text-white mb-1">Notion</span>
+                            <span class="text-[9px] text-dim uppercase font-black">Documentation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-[10px] font-black text-slate-600 uppercase tracking-[0.4em] text-center mt-20 opacity-60">
+                    “These tools help me maintain professional quality, consistency, and efficiency across creative and technical projects.”
+                </p>
+            </section>
+
+            <!-- 8. Workflow -->
+            <section class="mb-32">
+                <div class="glass p-16 rounded-[4rem] text-center relative overflow-hidden">
+                    <h3 class="text-3xl font-black mb-16 uppercase tracking-tighter">Creative Workflow</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mx-auto text-creative font-black text-xl">01</div>
+                            <i data-lucide="lightbulb" class="mx-auto text-dim"></i>
+                            <h5 class="font-bold uppercase tracking-widest text-xs">Concept</h5>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mx-auto text-creative font-black text-xl">02</div>
+                            <i data-lucide="pencil" class="mx-auto text-dim"></i>
+                            <h5 class="font-bold uppercase tracking-widest text-xs">Design</h5>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mx-auto text-creative font-black text-xl">03</div>
+                            <i data-lucide="code" class="mx-auto text-dim"></i>
+                            <h5 class="font-bold uppercase tracking-widest text-xs">Build</h5>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mx-auto text-creative font-black text-xl">04</div>
+                            <i data-lucide="check-circle" class="mx-auto text-dim"></i>
+                            <h5 class="font-bold uppercase tracking-widest text-xs">Output</h5>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- New: Where My Creative Skills Are Used -->
+            <section class="mb-12" data-aos="fade-up">
+                <h4 class="text-sm font-bold uppercase tracking-[0.3em] text-dim mb-8 text-center">Where My Creative Skills Are Used</h4>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
+                    <div class="glass p-4 rounded-2xl text-center text-[10px] font-black uppercase tracking-tighter border border-white/5 flex items-center justify-center uppercase tracking-widest">Personal Branding</div>
+                    <div class="glass p-4 rounded-2xl text-center text-[10px] font-black uppercase tracking-tighter border border-white/5 flex items-center justify-center uppercase tracking-widest">Product Promotion</div>
+                    <div class="glass p-4 rounded-2xl text-center text-[10px] font-black uppercase tracking-tighter border border-white/5 flex items-center justify-center uppercase tracking-widest">UI/UX Showcases</div>
+                    <div class="glass p-4 rounded-2xl text-center text-[10px] font-black uppercase tracking-tighter border border-white/5 flex items-center justify-center uppercase tracking-widest">Short-form Content</div>
+                    <div class="glass p-4 rounded-2xl text-center text-[10px] font-black uppercase tracking-tighter border border-white/5 flex items-center justify-center uppercase tracking-widest">Music Visuals</div>
+                </div>
+            </section>
+        </div>
+
+        <!-- NEW: Creative Impact Micro-section -->
+        <section class="mb-24 px-6 md:px-12 py-10 glass rounded-[3rem] border border-white/5 max-w-4xl mx-auto" data-aos="fade-up">
+            <h3 class="text-sm font-black uppercase tracking-[0.4em] text-dim mb-8 text-center">Creative Impact</h3>
+            <ul class="grid md:grid-cols-2 gap-y-6 gap-x-12">
+                <li class="flex items-start gap-4">
+                    <div class="w-1.5 h-1.5 rounded-full bg-creative mt-2 shrink-0"></div>
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-widest leading-relaxed">Social media reels designed to increase audience engagement and retention</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <div class="w-1.5 h-1.5 rounded-full bg-creative mt-2 shrink-0"></div>
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-widest leading-relaxed">Visual assets used for personal branding and product promotion</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <div class="w-1.5 h-1.5 rounded-full bg-creative mt-2 shrink-0"></div>
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-widest leading-relaxed">UI/UX visuals created to improve clarity and usability in web applications</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <div class="w-1.5 h-1.5 rounded-full bg-creative mt-2 shrink-0"></div>
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-widest leading-relaxed">Motion graphics used to simplify ideas and guide user attention</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- CREATIVE PAGE UPGRADE: Closing philosophy -->
+        <div class="text-center mt-12 opacity-50" data-aos="fade-up">
+            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-dim">I use creativity to simplify ideas, evoke emotion, and make technology feel human.</p>
+        </div>
+    </main>
+
+    <!-- PAGE: ABOUT -->
+    <main id="page-about" class="page-content container mx-auto px-6 pt-32 pb-20 section-hidden" aria-label="About Me and Professional Background">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-8">
+                <h2 class="text-4xl font-black uppercase tracking-tighter text-center" data-aos="fade-down">About Me</h2>
+                <!-- ABOUT PAGE UPGRADE: Current Status Badge -->
+                <span class="px-3 py-1 bg-accent/10 border border-accent/20 rounded-full text-[10px] font-black uppercase tracking-widest text-accent" data-aos="fade-left">Currently open to internships & junior roles</span>
+            </div>
+            
+            <div class="grid md:grid-cols-[1fr_1.8fr] gap-12 items-start" data-aos="fade-up">
+                <div class="relative">
+                    <div class="absolute -inset-2 bg-gradient-to-br from-accent/30 to-creative/30 rounded-3xl blur-2xl opacity-50"></div>
+                    <img src="IMG_20260112_115909_014.webp" alt="Akash Rajpoot Professional Portrait" class="relative w-full aspect-square object-cover rounded-3xl glass border border-white/10 shadow-2xl">
+                </div>
+
+                <div class="space-y-8">
+                    <div class="glass p-10 rounded-3xl text-dim leading-relaxed space-y-6">
+                        <p class="text-lg font-medium text-white tracking-tight">I’m Akash Rajpoot, a Computer Science student driven by curiosity for how systems work at scale and how people experience them.</p>
+                        
+                        <p>I enjoy building logic-driven, maintainable software — especially in AI automation, backend systems, and intelligent tooling. For me, good engineering is not just about correctness, but about clarity, performance, and long-term usability.</p>
+
+                        <p>Alongside technology, I actively practice creative storytelling through video editing, UI/UX design, and motion graphics. Creativity helps me think from the user’s perspective and design systems that feel intuitive rather than intimidating.</p>
+                        
+                        <p>Currently, I’m focused on internships and early-career opportunities where I can learn from real-world systems, collaborate with strong teams, and contribute meaningfully to impactful products.</p>
+                        
+                        <!-- ABOUT UPGRADE: Learning Mindset Paragraph -->
+                        <p>I enjoy learning by building things from scratch and improving them over time. I value feedback, iteration, and understanding why a system works — not just that it works.</p>
+
+                        <div class="pt-6 border-t border-white/5">
+                            <p class="text-sm font-bold text-accent uppercase tracking-[0.2em] italic">"I believe the best products are built where logic meets empathy."</p>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 glass rounded-2xl text-center border border-white/5">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Beyond the screen, I explore music production and the psychology of human behavior.</p>
+                    </div>
+
+                    <div class="flex justify-center md:justify-start gap-6 px-4">
+                        <a href="https://linkedin.com/in/akashrajpoot12" target="_blank" class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-accent transition-all text-white shadow-lg group">
+                            <i data-lucide="linkedin" class="group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="https://github.com/Akashrajpoot12" target="_blank" class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-accent transition-all text-white shadow-lg group">
+                            <i data-lucide="github" class="group-hover:scale-110 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact-section" class="container mx-auto px-6 py-20 border-t border-white/5" aria-label="Contact Section">
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <h2 class="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tighter">Let's Connect</h2>
+            <p class="text-dim mb-4 max-w-lg mx-auto italic">Open to internship opportunities and creative collaborations.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 text-left mt-12">
+                <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center">
+                    <h4 class="font-bold text-2xl mb-8 tracking-tighter uppercase">Direct Channels</h4>
+                    <div class="space-y-8">
+                        <div class="flex items-center gap-5 text-dim group">
+                            <div class="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all"><i data-lucide="mail" size="20"></i></div>
+                            <div>
+                                <span class="text-[10px] uppercase font-black text-dim block mb-1 tracking-widest">Send an Email</span>
+                                <span class="font-bold text-white tracking-tight">akashrajpoot2412@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[9px] font-bold text-slate-600 uppercase tracking-widest mt-10 text-center italic">Usually replies within 24 hours</p>
+                </div>
+                
+                <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center items-center text-center border-t-4 border-accent">
+                    <i data-lucide="rocket" size="40" class="text-accent mb-6"></i>
+                    <h4 class="font-bold text-2xl mb-4 tracking-tighter uppercase">Hire My Skills</h4>
+                    <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-8">Best for: Internships • Freelance Projects • Creative Collaborations</p>
+                    <a href="akash_rajpoot_resume.pdf" download="akash_rajpoot_resume.pdf" class="w-full py-4 bg-accent hover:bg-indigo-500 rounded-2xl font-bold transition-all text-white flex items-center justify-center gap-2 shadow-xl shadow-accent/20">
+                        <i data-lucide="file-text"></i> Download Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-secondary/80 border-t border-white/5 py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center gap-8">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-accent rounded flex items-center justify-center font-bold text-white">A</div>
+                <span class="font-bold text-dim tracking-tighter">Akash Rajpoot</span>
+            </div>
+            
+            <div class="flex gap-8 text-xs font-bold uppercase tracking-widest text-dim">
+                <button onclick="showPage('home')" class="hover:text-accent">Home</button>
+                <button onclick="showPage('technical')" class="hover:text-accent">Technical</button>
+                <button onclick="showPage('creative')" class="hover:text-accent">Creative</button>
+                <button onclick="showPage('about')" class="hover:text-accent">About</button>
+            </div>
+
+            <div class="flex gap-4">
+                <a href="https://github.com/Akashrajpoot12" target="_blank" class="hover:text-accent transition-colors" title="GitHub Profile"><i data-lucide="github" size="18"></i></a>
+                <a href="https://linkedin.com/in/akashrajpoot12" target="_blank" class="hover:text-accent transition-colors" title="LinkedIn Profile"><i data-lucide="linkedin" size="18"></i></a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 text-center">
+            <p class="text-xs font-black text-slate-400 uppercase tracking-[0.4em] mb-2">Designing systems. Crafting stories.</p>
+            <!-- FOOTER UPGRADE: Professional Signature Line -->
+            <p class="text-[8px] font-black text-slate-600 uppercase tracking-[0.5em] mb-4 opacity-40">Built with attention to detail, clarity, and long-term thinking.</p>
+            <p class="text-[9px] font-bold text-slate-600 uppercase tracking-[0.2em] mb-6">Open to meaningful work, learning, and collaboration.</p>
+            <p class="text-[10px] font-black text-slate-600 uppercase tracking-[0.2em]">© <span id="current-year">2025</span> Akash Rajpoot • All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP -->
+    <button id="scrollTopBtn" onclick="scrollToTop()" class="fixed bottom-8 right-8 w-12 h-12 glass rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-all scale-0 shadow-2xl z-50" aria-label="Scroll to Top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <!-- MODAL: PHOTO VIEWER -->
+    <div id="photoModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closePhotoModal()"></div>
+        <div class="relative w-full max-w-4xl glass rounded-3xl overflow-hidden shadow-2xl scale-90 transition-transform duration-300" id="photoModalContent">
+            <button onclick="closePhotoModal()" class="absolute top-6 right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white z-10 transition-all">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="flex flex-col md:flex-row items-center gap-6 p-8">
+                <img id="photoModalImage" src="" alt="Photo" class="w-full md:w-3/4 h-auto rounded-lg object-contain max-h-[70vh]">
+                <div class="flex flex-col gap-4 md:w-1/4">
+                    <div>
+                        <h3 id="photoModalTitle" class="text-xl font-bold text-white mb-2"></h3>
+                        <p id="photoModalInfo" class="text-sm text-dim"></p>
+                    </div>
+                    <a id="photoDownloadBtn" href="" download class="px-6 py-3 bg-accent hover:bg-indigo-500 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-white">
+                        <i data-lucide="download"></i> Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: VIDEO PLAYER For Gen Videos -->
+    <div id="genVideoPlayerModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeGenVideoPlayer()"></div>
+        <div class="relative w-full max-w-5xl glass rounded-3xl overflow-hidden shadow-2xl scale-90 transition-transform duration-300" id="genVideoPlayerContent">
+            <button onclick="closeGenVideoPlayer()" class="absolute top-6 right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white z-10 transition-all">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="flex flex-col md:flex-row items-center gap-6 p-8">
+                <video id="genVideoPlayer" class="w-full md:w-3/4 h-auto rounded-lg bg-black max-h-[60vh]" controls><source id="videoSource" src="" type="video/mp4"></video>
+                <div class="flex flex-col gap-4 md:w-1/4">
+                    <div>
+                        <h3 id="genVideoTitle" class="text-xl font-bold text-white mb-2"></h3>
+                        <p id="genVideoInfo" class="text-sm text-dim"></p>
+                    </div>
+                    <a id="genVideoDownloadBtn" href="" download class="px-6 py-3 bg-accent hover:bg-indigo-500 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-white">
+                        <i data-lucide="download"></i> Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: AUDIO PLAYER For Gen Songs -->
+    <div id="genAudioPlayerModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeGenAudioPlayer()"></div>
+        <div class="relative w-full max-w-2xl glass rounded-3xl overflow-hidden shadow-2xl scale-90 transition-transform duration-300" id="genAudioPlayerContent">
+            <button onclick="closeGenAudioPlayer()" class="absolute top-6 right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white z-10 transition-all">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="flex flex-col items-center gap-6 p-8">
+                <div class="w-full flex justify-center mb-4">
+                    <i data-lucide="music" size="64" class="text-design opacity-50"></i>
+                </div>
+                <div class="w-full text-center">
+                    <h3 id="genAudioTitle" class="text-2xl font-bold text-white mb-2"></h3>
+                    <p id="genAudioInfo" class="text-sm text-dim mb-6"></p>
+                </div>
+                <audio id="genAudioPlayer" class="w-full" controls><source id="audioSource" src="" type="audio/mpeg"></audio>
+                <a id="genAudioDownloadBtn" href="" download class="w-full px-6 py-3 bg-design hover:bg-emerald-600 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-white">
+                    <i data-lucide="download"></i> Download Song
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: VIDEO -->
+    <div id="videoModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-md" onclick="closeVideoModal()"></div>
+        <div class="relative w-full max-w-5xl aspect-video glass rounded-3xl overflow-hidden shadow-2xl scale-90 transition-transform duration-300" id="videoModalContent">
+            <button onclick="closeVideoModal()" class="absolute top-6 right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white z-10">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="w-full h-full flex flex-col items-center justify-center bg-slate-900">
+                <i data-lucide="play-circle" size="64" class="text-creative mb-4 animate-pulse"></i>
+                <h3 id="modalVideoTitle" class="text-xl font-bold uppercase tracking-tight">Video Title</h3>
+                <p class="text-sm text-dim mt-2 uppercase tracking-widest">Fullscreen Cinematic Preview</p>
+                <div class="mt-8 flex gap-4">
+                    <button class="px-8 py-3 bg-creative text-white rounded-2xl font-bold hover:scale-105 transition-transform">Play Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: MOTION -->
+    <div id="motionModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-md" onclick="closeMotionModal()"></div>
+        <div class="relative w-full max-w-xl glass p-10 rounded-[2.5rem] shadow-2xl scale-95 transition-transform duration-300" id="motionModalContent">
+            <button onclick="closeMotionModal()" class="absolute top-6 right-6 w-10 h-10 hover:bg-white/5 rounded-full flex items-center justify-center text-dim">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="text-center">
+                <div class="w-full aspect-square rounded-3xl bg-slate-900 mb-8 flex items-center justify-center border border-white/5">
+                    <i data-lucide="zap" size="80" class="text-design opacity-20"></i>
+                </div>
+                <h3 id="motionTitle" class="text-2xl font-black mb-2 uppercase tracking-tight">Animation Title</h3>
+                <div class="flex items-center justify-center gap-2 mb-6">
+                    <span class="px-3 py-1 bg-design/10 text-design rounded-full text-[10px] font-black uppercase tracking-widest">Tool: After Effects</span>
+                </div>
+                <p class="text-sm text-dim leading-relaxed">High-fidelity motion graphics engineered for professional branding and cinematic storytelling.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // DATA: GEN VIDEOS (Sorted - Working videos FIRST, non-working at END)
+        const GEN_VIDEOS = [
+            { id: 1, src: "gen vedio/Endless in Your Eyes – A Love That Never Fades _ Emotional English Song _ love note.mp4", title: "Endless in Your Eyes" },
+            { id: 2, src: "gen vedio/Eternal Flame – Heart-Touching English Love Song _ Romantic & Emotional Music _ love note.mp4", title: "Eternal Flame" },
+            { id: 3, src: "gen vedio/GOODBYE _ Heartfelt Hindi Lo Fi Rap   Emotional Love & Life Song  _ Daily Vibe @daily_vibe_1.mp4", title: "GOODBYE" },
+            { id: 4, src: "gen vedio/We Still Remain.mp4", title: "We Still Remain" },
+            { id: 5, src: "gen vedio/I Don't Care.mp4", title: "I Don't Care" },
+            { id: 6, src: "gen vedio/dhere jahar.mp4", title: "Dhere Jahar" },
+            { id: 7, src: "gen vedio/#Shorts#YouTubeShorts#Viral#Trending#ShortsFeed#ViralShorts#YtShorts dil lagana mana tha.mp4", title: "Dil Lagana Mana Tha" },
+            { id: 8, src: "gen vedio/Dil lagana hi nahi tha... 💔🥀 #Vibes#Shorts #PeacefulVibes #NatureLovers #Devotional #TrendingShorts.mp4", title: "Dil Lagana" },
+            { id: 9, src: "gen vedio/manzar धुंधला.mp4", title: "Manzar Dhundhla" },
+            { id: 10, src: "gen vedio/Theek Tha..mp4", title: "Theek Tha" },
+            { id: 11, src: "gen vedio/nafrat mp4.mp4", title: "Nafrat" },
+            { id: 12, src: "gen vedio/Night Move Show.mp4", title: "Night Move Show" },
+            { id: 13, src: "gen vedio/Untitled design.mp4", title: "Untitled Design" },
+            { id: 14, src: "gen vedio/Untitled design.mp42.mp4", title: "Untitled Design 2" },
+            { id: 15, src: "gen vedio/Live_Wallpaper_Generation_With_Effects.mp4", title: "Live Wallpaper Generation" },
+            { id: 16, src: "gen vedio/0_Rain_Storm_3840x2160.mp4", title: "Rain Storm" },
+            { id: 17, src: "gen vedio/large-oak.3840x2160.mp4", title: "Large Oak" },
+            // Non-working videos - moved to end
+            { id: 18, src: "gen vedio/video_2026-02-08_23-11-08.mp4", title: "[Archive] Video 18" },
+            { id: 19, src: "gen vedio/video_2026-02-08_23-11-38.mp4", title: "[Archive] Video 19" },
+            { id: 20, src: "gen vedio/video_2026-02-08_23-11-57.mp4", title: "[Archive] Video 20" },
+            { id: 21, src: "gen vedio/video_2026-02-08_23-12-42.mp4", title: "[Archive] Video 21" },
+            { id: 22, src: "gen vedio/video_2026-02-08_23-12-54.mp4", title: "[Archive] Video 22" },
+            { id: 23, src: "gen vedio/video_2026-02-08_23-13-03.mp4", title: "[Archive] Video 23" },
+            { id: 24, src: "gen vedio/video_2026-02-08_23-13-13.mp4", title: "[Archive] Video 24" },
+            { id: 25, src: "gen vedio/video_2026-02-08_23-13-20.mp4", title: "[Archive] Video 25" },
+            { id: 26, src: "gen vedio/video_2026-02-08_23-13-24.mp4", title: "[Archive] Video 26" },
+            { id: 27, src: "gen vedio/video_2026-02-08_23-13-28.mp4", title: "[Archive] Video 27" },
+            { id: 28, src: "gen vedio/video_2026-02-08_23-13-34.mp4", title: "[Archive] Video 28" },
+            { id: 29, src: "gen vedio/video_2026-02-08_23-13-39.mp4", title: "[Archive] Video 29" },
+            { id: 30, src: "gen vedio/video_2026-02-08_23-13-56.mp4", title: "[Archive] Video 30" },
+            { id: 31, src: "gen vedio/video_2026-02-08_23-14-11.mp4", title: "[Archive] Video 31" },
+            { id: 32, src: "gen vedio/video_2026-02-08_23-14-36.mp4", title: "[Archive] Video 32" },
+            { id: 33, src: "gen vedio/video_2026-02-08_23-14-41.mp4", title: "[Archive] Video 33" },
+            { id: 34, src: "gen vedio/video_2026-02-08_23-14-47.mp4", title: "[Archive] Video 34" },
+            { id: 35, src: "gen vedio/AQOM5X9aY6_3Kl_MOxTvy8ThLei74NLfSv3zoGbHitcxotTWaKXpMoTZyYgtnOPZqPttYp5.mp4", title: "[Broken] Video 35" },
+            { id: 36, src: "gen vedio/AQPOEL5enhX5nkbyoYRajFq_lQ5CNcjE19qzC_HrknSiTwQYKZJTYwuecxdLtX_pxZDLzFYIoqRMuL.mp4", title: "[Broken] Video 36" }
+        ];
+
+        // DATA: GEN SONGS
+        const GEN_SONGS = [
+            { id: 1, src: "gen song/(हरी ओम... हरी ओम...) (1).mp3", title: "Hari Om 1" },
+            { id: 2, src: "gen song/(हरी ओम... हरी ओम...) (2).mp3", title: "Hari Om 2" },
+            { id: 3, src: "gen song/(हरी ओम... हरी ओम...).mp3", title: "Hari Om" },
+            { id: 4, src: "gen song/(ॐ जय राम जय राम जय जय राम) (1).mp3", title: "Jay Ram 1" },
+            { id: 5, src: "gen song/(ॐ श्री राम जय राम जय जय राम).mp3", title: "Jay Ram" },
+            { id: 6, src: "gen song/Ab Pyaar Sa Nahi.mp3", title: "Ab Pyaar Sa Nahi" },
+            { id: 7, src: "gen song/Bas Tu Reh Jaaye.mp3", title: "Bas Tu Reh Jaaye" },
+            { id: 8, src: "gen song/Bassline Halo.mp3", title: "Bassline Halo" },
+            { id: 9, src: "gen song/Edge Of The Echo.mp3", title: "Edge Of The Echo" },
+            { id: 10, src: "gen song/Fading In The Dark.mp3", title: "Fading In The Dark" },
+            { id: 11, src: "gen song/Hum Thode Kam Ho Gaye (1).mp3", title: "Hum Thode Kam 1" },
+            { id: 12, src: "gen song/Hum Thode Kam Ho Gaye (2).mp3", title: "Hum Thode Kam 2" },
+            { id: 13, src: "gen song/Hum Thode Kam Ho Gaye.mp3", title: "Hum Thode Kam" },
+            { id: 14, src: "gen song/Itna Paas Sunai Deti Ho.mp3", title: "Itna Paas Sunai" },
+            { id: 15, src: "gen song/Khamosh Saza.mp3", title: "Khamosh Saza" },
+            { id: 16, src: "gen song/Mere Hain Tu.mp3", title: "Mere Hain Tu" },
+            { id: 17, src: "gen song/Night Moves Slow.mp3", title: "Night Moves Slow" },
+            { id: 18, src: "gen song/Rooh Tere Naam (1).mp3", title: "Rooh Tere Naam 1" },
+            { id: 19, src: "gen song/Rooh Tere Naam.mp3", title: "Rooh Tere Naam" },
+            { id: 20, src: "gen song/Shayad Abhi Bhi.mp3", title: "Shayad Abhi Bhi" },
+            { id: 21, src: "gen song/Tera Saath Hi Kaafi.mp3", title: "Tera Saath Hi Kaafi" },
+            { id: 22, src: "gen song/Tu Hi Khoobsurat.mp3", title: "Tu Hi Khoobsurat" },
+            { id: 23, src: "gen song/Tu Meri Rehna.mp3", title: "Tu Meri Rehna" },
+            { id: 24, src: "gen song/Tu saath sa reh.mp3", title: "Tu Saath Sa Reh" },
+            { id: 25, src: "gen song/Tu Tha Toh Theek Tha.mp3", title: "Tu Tha Toh Theek" },
+            { id: 26, src: "gen song/Tujh Mein Kahin.mp3", title: "Tujh Mein Kahin" },
+            { id: 27, src: "gen song/We Still Remain.mp3", title: "We Still Remain" },
+            { id: 28, src: "gen song/इतना क़रीब.mp3", title: "Itna Qareeb" },
+            { id: 29, src: "gen song/ख़ामोशी बन गया.mp3", title: "Khamoshi Ban Gaya" },
+            { id: 30, src: "gen song/ख़ामोशी में तू (1).mp3", title: "Khamoshi Mein Tu 1" },
+            { id: 31, src: "gen song/ख़ामोशी में तू.mp3", title: "Khamoshi Mein Tu" },
+            { id: 32, src: "gen song/गोविंद मुरारी.mp3", title: "Govind Murari" },
+            { id: 33, src: "gen song/तू था, मैं था.mp3", title: "Tu Tha Main Tha" },
+            { id: 34, src: "gen song/तेरी यादों का साया.mp3", title: "Teri Yadon Ka Saya" },
+            { id: 35, src: "gen song/थोड़ा‑थोड़ा सच.mp3", title: "Thoda Thoda Sach" },
+            { id: 36, src: "gen song/दिल से पूछूँ, दिल से बोलूँ.mp3", title: "Dil Se Poochhun" },
+            { id: 37, src: "gen song/नंदलाल श्याम.mp3", title: "Nandlal Shyam" },
+            { id: 38, src: "gen song/बंसी की मधुर तान – श्याम नाम रस.mp3", title: "Bansi Ki Madhur Taan" },
+            { id: 39, src: "gen song/बेवजह सा तू (1).mp3", title: "Bevjah Sa Tu 1" },
+            { id: 40, src: "gen song/बेवजह सा तू.mp3", title: "Bevjah Sa Tu" },
+            { id: 41, src: "gen song/बेवफ़ा साँसें.mp3", title: "Bewafa Sansein" },
+            { id: 42, src: "gen song/राधे के श्याम.mp3", title: "Radhe Ke Shyam" },
+            { id: 43, src: "gen song/हम फिर भी याद रहे.mp3", title: "Ham Phir Bhi Yaad Rahe" },
+            { id: 44, src: "gen song/ॐ नमः शिवाय – कैलाश की अनंत धुन.mp3", title: "Om Namah Shivaya 1" },
+            { id: 45, src: "gen song/ॐ नमः शिवाय – कैलाश की अनंत धुन.mp32.mp3", title: "Om Namah Shivaya 2" },
+            { id: 46, src: "gen song/ॐ नमः शिवाय – कैलाश की धुन (Om Namah Shivaya – Kailash Ki Dhun).mp3", title: "Om Namah Shivaya" },
+            { id: 47, src: "gen song/🎼  (1).mp3", title: "Song 47" },
+            { id: 48, src: "gen song/🎼 .mp3", title: "Song 48" }
+        ];
+
+        let isVideoGalleryExpanded = false;
+        let isSongGalleryExpanded = false;
+
+        // VIDEO PLAYER FUNCTIONS
+        function openGenVideoPlayer(video) {
+            const modal = document.getElementById('genVideoPlayerModal');
+            const videoPlayer = document.getElementById('genVideoPlayer');
+            const videoSource = document.getElementById('videoSource');
+            const title = document.getElementById('genVideoTitle');
+            const info = document.getElementById('genVideoInfo');
+            const downloadBtn = document.getElementById('genVideoDownloadBtn');
+            
+            videoSource.src = video.src;
+            videoPlayer.load();
+            title.innerText = video.title;
+            info.innerText = "High-quality video from creative collection";
+            downloadBtn.href = video.src;
+            downloadBtn.download = video.title + ".mp4";
+            
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-open');
+            setTimeout(() => document.getElementById('genVideoPlayerContent').classList.remove('scale-90'), 10);
+        }
+
+        function closeGenVideoPlayer() {
+            const modal = document.getElementById('genVideoPlayerModal');
+            const content = document.getElementById('genVideoPlayerContent');
+            const videoPlayer = document.getElementById('genVideoPlayer');
+            videoPlayer.pause();
+            content.classList.add('scale-90');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            }, 300);
+        }
+
+        function toggleVideoGallery() {
+            isVideoGalleryExpanded = !isVideoGalleryExpanded;
+            renderVideoGallery();
+        }
+
+        function renderVideoGallery() {
+            const container = document.getElementById('video-gallery-container');
+            const btnText = document.getElementById('video-more-text');
+            const btnIcon = document.getElementById('video-more-icon');
+            
+            let videosToShow = isVideoGalleryExpanded ? GEN_VIDEOS : GEN_VIDEOS.slice(0, 10);
+            
+            let html = videosToShow.map((video, idx) => {
+                const gradients = [
+                    'from-purple-600 to-pink-600',
+                    'from-blue-600 to-cyan-600',
+                    'from-orange-600 to-red-600',
+                    'from-green-600 to-emerald-600',
+                    'from-indigo-600 to-purple-600'
+                ];
+                const gradient = gradients[idx % gradients.length];
+                
+                return `
+                <div class="glass rounded-2xl overflow-hidden group cursor-pointer relative aspect-video shadow-lg hover:shadow-xl transition-all" data-aos="fade-up" onclick="openGenVideoPlayer({src: '${video.src}', title: '${video.title}'})">
+                    <div class="absolute inset-0 bg-gradient-to-br ${gradient} opacity-30"></div>
+                    <video class="w-full h-full object-cover" preload="metadata" onerror="this.style.display='none'">
+                        <source src="${video.src}" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="play-circle" class="text-white w-8 h-8"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform">
+                        <h5 class="text-white font-bold text-sm line-clamp-2">${video.title}</h5>
+                    </div>
+                </div>
+            `}).join('');
+            
+            container.innerHTML = html;
+            
+            if (isVideoGalleryExpanded) {
+                btnText.innerText = "Show Less Videos";
+                btnIcon.style.transform = "rotate(180deg)";
+            } else {
+                btnText.innerText = "View More Videos";
+                btnIcon.style.transform = "rotate(0deg)";
+            }
+            
+            lucide.createIcons();
+            AOS.refresh();
+        }
+
+        // AUDIO PLAYER FUNCTIONS
+        function openGenAudioPlayer(song) {
+            const modal = document.getElementById('genAudioPlayerModal');
+            const audioPlayer = document.getElementById('genAudioPlayer');
+            const audioSource = document.getElementById('audioSource');
+            const title = document.getElementById('genAudioTitle');
+            const info = document.getElementById('genAudioInfo');
+            const downloadBtn = document.getElementById('genAudioDownloadBtn');
+            
+            audioSource.src = song.src;
+            audioPlayer.load();
+            title.innerText = song.title;
+            info.innerText = "High-quality audio from music collection";
+            downloadBtn.href = song.src;
+            downloadBtn.download = song.title + ".mp3";
+            
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-open');
+            setTimeout(() => document.getElementById('genAudioPlayerContent').classList.remove('scale-90'), 10);
+        }
+
+        function closeGenAudioPlayer() {
+            const modal = document.getElementById('genAudioPlayerModal');
+            const content = document.getElementById('genAudioPlayerContent');
+            const audioPlayer = document.getElementById('genAudioPlayer');
+            audioPlayer.pause();
+            content.classList.add('scale-90');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            }, 300);
+        }
+
+        function toggleSongGallery() {
+            isSongGalleryExpanded = !isSongGalleryExpanded;
+            renderSongGallery();
+        }
+
+        function renderSongGallery() {
+            const container = document.getElementById('song-gallery-container');
+            const btnText = document.getElementById('song-more-text');
+            const btnIcon = document.getElementById('song-more-icon');
+            
+            let songsToShow = isSongGalleryExpanded ? GEN_SONGS : GEN_SONGS.slice(0, 10);
+            
+            let html = songsToShow.map((song) => {
+                return `
+                <div class="glass rounded-2xl overflow-hidden group cursor-pointer p-6 text-center hover:bg-design/[0.03] transition-all" data-aos="fade-up" onclick="openGenAudioPlayer({src: '${song.src}', title: '${song.title}'})">
+                    <div class="w-full h-20 bg-slate-900 rounded-lg flex items-center justify-center mb-4 group-hover:bg-design/10 transition-all">
+                        <i data-lucide="music" class="text-design w-8 h-8 group-hover:scale-125 transition-transform"></i>
+                    </div>
+                    <h4 class="font-bold text-white mb-2 truncate">${song.title}</h4>
+                    <button class="w-full px-4 py-2 bg-design/20 hover:bg-design/40 rounded-lg text-xs font-bold text-design transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="play" size="14"></i> Play
+                    </button>
+                </div>
+            `}).join('');
+            
+            container.innerHTML = html;
+            
+            if (isSongGalleryExpanded) {
+                btnText.innerText = "Show Less Songs";
+                btnIcon.style.transform = "rotate(180deg)";
+            } else {
+                btnText.innerText = "View More Songs";
+                btnIcon.style.transform = "rotate(0deg)";
+            }
+            
+            lucide.createIcons();
+            AOS.refresh();
+        }
+
+        // DATA: PHOTO GALLERY - From gen photo folder
+        const PHOTO_GALLERY = [
+            { id: 1, src: "gen photo/486.png", title: "Creative Design 1" },
+            { id: 2, src: "gen photo/ad8b4e28be5ba3f1905d29746c6ca3af.jpg", title: "Photography 1" },
+            { id: 3, src: "gen photo/IMG_0204.JPG", title: "Portrait Shot 1" },
+            { id: 4, src: "gen photo/IMG_0207.jpg", title: "Portrait Shot 2" },
+            { id: 5, src: "gen photo/paper.png", title: "Design Asset" },
+            { id: 6, src: "gen photo/RDT_20240920_0021011132718711334322167.jpg", title: "September 2024" },
+            { id: 7, src: "gen photo/RDT_20240920_0021307839290329706107179.jpg", title: "September 2024 #2" },
+            { id: 8, src: "gen photo/RDT_20240921_211214461147730445285065.jpg", title: "Night Shot 1" },
+            { id: 9, src: "gen photo/RDT_20240921_2112202582955219838964068.jpg", title: "Night Shot 2" },
+            { id: 10, src: "gen photo/RDT_20241003_2316476511838868779956048.jpg", title: "October 2024" },
+            { id: 11, src: "gen photo/RDT_20241018_1949542262733159680967697.jpg", title: "October 18, 2024" },
+            { id: 12, src: "gen photo/RDT_20241026_1711286510347253375229888.jpg", title: "October 26, 2024" },
+            { id: 13, src: "gen photo/RDT_20241108_2123074898483156896357146.jpg", title: "November 2024" },
+            { id: 14, src: "gen photo/RDT_20241204_182316116284982831945830.jpg", title: "December 4, 2024" },
+            { id: 15, src: "gen photo/RDT_20241224_1853454772666158903636072.jpg", title: "Christmas 2024 #1" },
+            { id: 16, src: "gen photo/RDT_20241224_1853598051307153044240515.jpg", title: "Christmas 2024 #2" },
+            { id: 17, src: "gen photo/RDT_20250501_2057293272930131778732950.jpg", title: "May 2025" },
+            { id: 18, src: "gen photo/RDT_20250518_0017354291879593698262315.jpg", title: "May 18, 2025" },
+            { id: 19, src: "gen photo/RDT_20250522_0013206335388575017647003.jpg", title: "May 22, 2025" },
+            { id: 20, src: "gen photo/RDT_20250522_051956356368989630896581.jpg", title: "May 22 Morning" },
+            { id: 21, src: "gen photo/RDT_20250523_2045349212949740624299582.jpg", title: "May 23, 2025" },
+            { id: 22, src: "gen photo/RDT_20250605_2114315232347827314025450.jpg", title: "June 5, 2025" },
+            { id: 23, src: "gen photo/RDT_20250609_2344227771395505707545194.jpg", title: "June 9, 2025" },
+            { id: 24, src: "gen photo/RDT_20250627_1856264597514750711750763.jpg", title: "June 27, 2025" },
+            { id: 25, src: "gen photo/RDT_20250709_0642325726876221357629811.jpg", title: "July 9 Morning" },
+            { id: 26, src: "gen photo/RDT_20250709_0642483927719758902326208.jpg", title: "July 9 Early" },
+            { id: 27, src: "gen photo/RDT_20250712_2219345402010031507800092.jpg", title: "July 12, 2025" },
+            { id: 28, src: "gen photo/RDT_20250804_2223504995429283839900147.jpg", title: "August 4 #1" },
+            { id: 29, src: "gen photo/RDT_20250804_222354864388676893622794.jpg", title: "August 4 #2" },
+            { id: 30, src: "gen photo/RDT_20250804_2223582746461836101089763.jpg", title: "August 4 #3" },
+            { id: 31, src: "gen photo/RDT_20250804_2226043087000331785433451.jpg", title: "August 4 #4" },
+            { id: 32, src: "gen photo/RDT_20250804_2227121909458676271146255.jpg", title: "August 4 #5" },
+            { id: 33, src: "gen photo/RDT_20250804_2230423048351805692383193.jpg", title: "August 4 #6" },
+            { id: 34, src: "gen photo/RDT_20250821_2154409205926759957981337.jpg", title: "August 21, 2025" },
+            { id: 35, src: "gen photo/RDT_20251109_2210309037952210561092177.jpg", title: "November 9 #1" },
+            { id: 36, src: "gen photo/RDT_20251109_2210355042534187169642006.jpg", title: "November 9 #2" },
+            { id: 37, src: "gen photo/wall1 (13).jpg", title: "Wall Art" }
+        ];
+
+        let isPhotoGalleryExpanded = false;
+
+        // PHOTO MODAL HANDLERS
+        function openPhotoModal(photo) {
+            const modal = document.getElementById('photoModal');
+            const img = document.getElementById('photoModalImage');
+            const title = document.getElementById('photoModalTitle');
+            const info = document.getElementById('photoModalInfo');
+            const downloadBtn = document.getElementById('photoDownloadBtn');
+            
+            img.src = photo.src;
+            title.innerText = photo.title;
+            info.innerText = "High-quality photography from creative collection";
+            downloadBtn.href = photo.src;
+            downloadBtn.download = photo.title + ".jpg";
+            
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-open');
+            setTimeout(() => document.getElementById('photoModalContent').classList.remove('scale-90'), 10);
+        }
+
+        function closePhotoModal() {
+            const modal = document.getElementById('photoModal');
+            const content = document.getElementById('photoModalContent');
+            content.classList.add('scale-90');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            }, 300);
+        }
+
+        // PHOTO GALLERY TOGGLE & RENDER
+        function togglePhotoGallery() {
+            isPhotoGalleryExpanded = !isPhotoGalleryExpanded;
+            renderPhotoGallery();
+        }
+
+        function renderPhotoGallery() {
+            const container = document.getElementById('photo-gallery-container');
+            const btnText = document.getElementById('photo-more-text');
+            const btnIcon = document.getElementById('photo-more-icon');
+            
+            let photosToShow = isPhotoGalleryExpanded ? PHOTO_GALLERY : PHOTO_GALLERY.slice(0, 10);
+            
+            let html = photosToShow.map((photo, i) => {
+                return `
+                <div class="glass rounded-2xl overflow-hidden group cursor-pointer relative aspect-square" data-aos="fade-up" onclick="openPhotoModal({src: '${photo.src}', title: '${photo.title}'})">
+                    <img src="${photo.src}" alt="${photo.title}" class="w-full h-full object-cover group-hover:scale-110 group-hover:brightness-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <div class="text-center">
+                            <i data-lucide="zoom-in" class="text-white mx-auto mb-2"></i>
+                            <span class="text-[10px] font-black uppercase text-white">${photo.title}</span>
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+            
+            container.innerHTML = html;
+            
+            if (isPhotoGalleryExpanded) {
+                btnText.innerText = "Show Less Photos";
+                btnIcon.style.transform = "rotate(180deg)";
+            } else {
+                btnText.innerText = "View All Photos";
+                btnIcon.style.transform = "rotate(0deg)";
+            }
+            
+            lucide.createIcons();
+            AOS.refresh();
+        }
+
+        // DATA: TECHNICAL PROJECTS
+        const ALL_PROJECTS = [
+            { 
+                name: "Fake News Detection System", 
+                status: "Private", 
+                tech: ["Python", "ML", "NLP"], 
+                field: "AI", 
+                desc: "Detects fake news using advanced NLP and trained ML models.", 
+                focus: "NLP & CLASSIFICATION LOGIC",
+                img: "https://images.unsplash.com/photo-1581091215367-59ab6c1f7d33?w=400&h=250&fit=crop",
+                repo: "#"
+            },
+            { 
+                name: "AI Agent Website Testing", 
+                status: "Public", 
+                tech: ["Python", "AI Agents"], 
+                field: "AI", 
+                desc: "Automatically tests websites using natural language instructions.", 
+                focus: "AI AUTOMATION & TESTING",
+                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
+                repo: "https://github.com/Akashrajpoot12/AI-Testing-Agent"
+            },
+            { 
+                name: "Natural Language Automation", 
+                status: "Public", 
+                tech: ["Python", "Automation"], 
+                field: "AI", 
+                desc: "Converts human language into automated website test actions.", 
+                focus: "NLP SYSTEMS & SELENIUM",
+                img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop",
+                repo: "https://github.com/Akashrajpoot12/NLP-Automation"
+            },
+            { 
+                name: "Dashboard Web App", 
+                status: "Public", 
+                tech: ["JS", "HTML", "CSS"], 
+                field: "Web", 
+                desc: "Interactive dashboard with dynamic UI components.", 
+                focus: "FRONTEND DATA VIZ",
+                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
+                repo: "https://github.com/Akashrajpoot12/Dashboard-Webapp"
+            },
+            { 
+                name: "Smart Fridge System", 
+                status: "Public", 
+                tech: ["Python", "AI", "IoT"], 
+                field: "AI", 
+                desc: "Manages fridge items and suggests recipes using AI.", 
+                focus: "AI & IOT INTEGRATION",
+                img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=250&fit=crop",
+                repo: "https://github.com/Akashrajpoot12/Smart-Fridge"
+            },
+            { 
+                name: "Socket Chat Server", 
+                status: "Public", 
+                tech: ["Python", "Sockets"], 
+                field: "Web", 
+                desc: "Real-time chat server using low-level socket programming.", 
+                focus: "NETWORK SOCKET LOGIC",
+                img: "https://images.unsplash.com/photo-1525186402429-b4ff38bedbec?w=400&h=250&fit=crop",
+                repo: "https://github.com/Akashrajpoot12/Chat-Server"
+            },
+            { 
+                name: "Amazon ML Challenge 2025", 
+                status: "Public", 
+                tech: ["Python", "ML"], 
+                field: "AI", 
+                desc: "Machine learning solution for Amazon's ML competition.", 
+                focus: "ML MODEL OPTIMIZATION",
+                img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop",
+                repo: "https://github.com/Akashrajpoot12/Amazon-ML-2025"
+            },
+            { 
+                name: "Image Classification DL", 
+                status: "Public", 
+                tech: ["Python", "CNN"], 
+                field: "AI", 
+                desc: "Deep learning model for image classification using neural networks.", 
+                focus: "COMPUTER VISION (CNN)",
+                img: "https://images.unsplash.com/photo-1581092334504-1e7e8c2e7c0a?w=400&h=250&fit=crop",
+                repo: "https://github.com/Akashrajpoot12/Image-Classification"
+            },
+            { 
+                name: "Phishing Email Detector", 
+                status: "Public", 
+                tech: ["Python", "Security"], 
+                field: "Security", 
+                desc: "Identifies phishing attempts using NLP classifiers.", 
+                focus: "SECURITY & PATTERN DETECTION",
+                img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=250&fit=crop",
+                repo: "https://github.com/Akashrajpoot12/Phishing-Detector"
+            },
+            { 
+                name: "Firewall Automation", 
+                status: "Public", 
+                tech: ["Python", "Security"], 
+                field: "Security", 
+                desc: "Automated management of security rule enforcement.", 
+                focus: "NETWORK SECURITY AUTOMATION",
+                img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=250&fit=crop",
+                repo: "https://github.com/Akashrajpoot12/Firewall-Automation"
+            },
+            { name: "Quiz Game", status: "Public", tech: ["JS"], field: "Web", desc: "Interactive game with dynamic questions and scoring.", focus: "DOM MANIPULATION", img: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=400&h=250&fit=crop", repo: "https://github.com/Akashrajpoot12/Quiz-Game" },
+            { name: "Flappy Bird Game", status: "Public", tech: ["Python"], field: "Web", desc: "Classic game implementation using Python libraries.", focus: "GAME PHYSICS & LOGIC", img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop", repo: "https://github.com/Akashrajpoot12/Flappy-Bird" },
+            { name: "Music Player", status: "Public", tech: ["Python"], field: "Web", desc: "Desktop music player with playlist and audio support.", focus: "GUI & MEDIA HANDLING", img: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=250&fit=crop", repo: "https://github.com/Akashrajpoot12/Music-Player" },
+            { name: "NovaTasks To-Do", status: "Public", tech: ["JS"], field: "Web", desc: "Task management app with a clean UI and CRUD logic.", focus: "CRUD ARCHITECTURE", img: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?w=400&h=250&fit=crop", repo: "https://github.com/Akashrajpoot12/NovaTasks" },
+            { name: "Catalog Solution", status: "Public", tech: ["C++"], field: "Web", desc: "C++ based catalog management and optimization solution.", focus: "SYSTEM PERFORMANCE", img: "https://images.unsplash.com/photo-1551288049-bbbda5366392?w=400&h=250&fit=crop", repo: "https://github.com/Akashrajpoot12/Catalog-Cpp" },
+            { name: "AI Chat Bot", status: "Public", tech: ["Python", "AI"], field: "AI", desc: "AI-powered chatbot capable of context handling.", focus: "CONVERSATIONAL AI", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop", repo: "https://github.com/Akashrajpoot12/AI-Chatbot" },
+            { name: "Chat Application", status: "Public", tech: ["C++"], field: "Web", desc: "Console-based chat built with low-level networking.", focus: "CPP BACKEND LOGIC", img: "https://images.unsplash.com/photo-1525186402429-b4ff38bedbec?w=400&h=250&fit=crop", repo: "https://github.com/Akashrajpoot12/Chat-App-Cpp" },
+            { name: "Smart Expense Tracker", status: "Public", tech: ["JS"], field: "Web", desc: "Expense tracking web app with spending analytics.", focus: "FINTECH DATA HANDLING", img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=250&fit=crop", repo: "https://github.com/Akashrajpoot12/Expense-Tracker" },
+            { name: "Audio Visualization", status: "Public", tech: ["JS"], field: "Web", desc: "Music player with real-time visual frequency effects.", focus: "MEDIA TECH & CANVAS API", img: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=250&fit=crop", repo: "https://github.com/Akashrajpoot12/Audio-Viz" },
+            { name: "Weather App", status: "Public", tech: ["JS"], field: "Web", desc: "Live weather tracking using external API integration.", focus: "REST API INTEGRATION", img: "https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?w=400&h=250&fit=crop", repo: "https://github.com/Akashrajpoot12/Weather-App" },
+            { name: "YourCart", status: "Public", tech: ["HTML", "JS"], field: "Web", desc: "Price comparison and recommendation engine for shopping.", focus: "E-COMMERCE SCRAPING LOGIC", img: "https://images.unsplash.com/photo-1515169067865-5387ec356754?w=400&h=250&fit=crop", repo: "https://github.com/Akashrajpoot12/YourCart" }
+        ];
+
+        let currentTechFilter = 'All';
+        let isTechExpanded = false;
+
+        // THEME ENGINE
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            const isLight = body.classList.toggle('light-theme');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            icon.setAttribute('data-lucide', isLight ? 'sun' : 'moon');
+            lucide.createIcons();
+        }
+
+        // INITIALIZE THEME
+        (function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+            }
+        })();
+
+        // NAVIGATION & RENDERING
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('section-hidden'));
+            document.getElementById('page-' + pageId).classList.remove('section-hidden');
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.toggle('nav-active', btn.dataset.page === pageId));
+            
+            // Dynamic Meta Description for SEO
+            const metaDescriptions = {
+                home: "Portfolio of Akash Rajpoot - Tech Developer & Creative Designer specialized in AI and systems.",
+                technical: "Technical projects by Akash Rajpoot, featuring AI Automation, NLP, and Backend systems.",
+                creative: "Creative works by Akash Rajpoot - Video Editing, UI/UX, and Motion Graphics.",
+                about: "Learn more about Akash Rajpoot, Computer Science student and software builder."
+            };
+            document.getElementById('meta-description').setAttribute('content', metaDescriptions[pageId] || metaDescriptions.home);
+
+            if (pageId === 'technical') renderTechProjects();
+            if (pageId === 'creative') {
+                renderPhotoGallery();
+                // Restore View More state for Creative page
+                const isExpanded = localStorage.getItem('creative_expanded') === 'true';
+                if (isExpanded) {
+                    const extendedSection = document.getElementById('extended-creative-sections');
+                    const btnText = document.getElementById('view-more-text');
+                    const btnIcon = document.getElementById('view-more-icon');
+                    extendedSection.classList.remove('section-hidden');
+                    if(btnText) btnText.innerText = "Show Less";
+                    if(btnIcon) btnIcon.style.transform = "rotate(180deg)";
+                }
+            }
+            
+            AOS.refresh();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            if (pageId === 'technical') {
+                setTimeout(() => {
+                    document.querySelectorAll('.progress-bar').forEach(bar => {
+                        bar.style.width = bar.dataset.width;
+                    });
+                }, 300);
+            }
+        }
+
+        // TECH PROJECTS RENDERING
+        function filterProjects(field) {
+            currentTechFilter = field;
+            isTechExpanded = (field !== 'All');
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.toggle('filter-btn-active', btn.dataset.filter === field));
+            renderTechProjects();
+        }
+
+        function renderTechProjects() {
+            const container = document.getElementById('projects-container');
+            if (!container) return;
+            let filtered = (currentTechFilter === 'All') ? ALL_PROJECTS : ALL_PROJECTS.filter(p => p.field === currentTechFilter);
+            let displayCount = isTechExpanded ? filtered.length : Math.min(filtered.length, 10);
+            let projectsToShow = filtered.slice(0, displayCount);
+            
+            let html = projectsToShow.map((p, i) => {
+                const techBadges = p.tech.map(t => `<span class="px-2 py-0.5 bg-accent/5 border border-accent/10 rounded text-[9px] text-accent font-bold uppercase tracking-widest">${t}</span>`).join('');
+                
+                return `
+                <div class="project-card glass p-6 rounded-3xl flex flex-col h-full" data-aos="fade-up">
+                    <div class="relative h-40 rounded-2xl mb-6 bg-slate-900 overflow-hidden">
+                        <img loading="lazy" src="${p.img || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=400&seed=' + p.name}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all">
+                        <div class="absolute top-3 left-3 px-2 py-1 glass rounded-full text-[10px] font-bold text-accent uppercase tracking-tighter">${p.field}</div>
+                        <div class="absolute top-3 right-3 text-dim">${p.status === 'Private' ? '<i data-lucide="lock" size="14" class="text-rose-500"></i>' : '<i data-lucide="globe" size="14"></i>'}</div>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2 font-black tracking-tighter uppercase text-white">${p.name}</h4>
+                    <p class="text-sm text-dim line-clamp-2 mb-4">${p.desc}</p>
+                    
+                    <!-- TECH STACK BADGES -->
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        ${techBadges}
+                    </div>
+
+                    <!-- PROJECT CARD FOCUS LINE -->
+                    <p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-6 opacity-80">Focus: ${p.focus}</p>
+                    
+                    <div class="flex justify-between items-center mt-auto">
+                        ${p.status === 'Public' ? `
+                            <a href="${p.repo}" target="_blank" class="text-xs font-bold text-accent flex items-center gap-1 hover:underline">
+                                <i data-lucide="github" size="14"></i> View Code
+                            </a>
+                        ` : `
+                            <span class="text-xs font-bold text-slate-600 flex items-center gap-1 cursor-help" title="Private Repository">
+                                <i data-lucide="lock" size="14"></i> Access Restricted
+                            </span>
+                        `}
+                    </div>
+                </div>
+            `}).join('');
+            
+            if (!isTechExpanded && filtered.length > 10) {
+                html += `
+                    <div onclick="isTechExpanded=true; renderTechProjects()" class="glass p-8 rounded-3xl border-2 border-dashed border-accent/20 flex flex-col items-center justify-center text-center cursor-pointer group hover:bg-accent/5 transition-all min-h-[300px]">
+                        <div class="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform"><i data-lucide="plus"></i></div>
+                        <h4 class="text-xl font-bold mb-2 uppercase tracking-tighter">View More Projects</h4>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+            lucide.createIcons();
+            AOS.refresh();
+        }
+
+        // CREATIVE TOGGLE FUNCTIONALITY
+        function toggleCreativeExpansion() {
+            const extendedSection = document.getElementById('extended-creative-sections');
+            const btnText = document.getElementById('view-more-text');
+            const btnIcon = document.getElementById('view-more-icon');
+            
+            if (extendedSection.classList.contains('section-hidden')) {
+                extendedSection.classList.remove('section-hidden');
+                btnText.innerText = "Show Less";
+                btnIcon.style.transform = "rotate(180deg)";
+                localStorage.setItem('creative_expanded', 'true');
+                AOS.refresh();
+            } else {
+                extendedSection.classList.add('section-hidden');
+                btnText.innerText = "View More Creative Work";
+                btnIcon.style.transform = "rotate(0deg)";
+                localStorage.setItem('creative_expanded', 'false');
+                document.getElementById('page-creative').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // MODAL HANDLERS
+        function openVideoModal(title) {
+            document.getElementById('videoModal').classList.remove('hidden');
+            document.getElementById('modalVideoTitle').innerText = title;
+            document.body.classList.add('modal-open');
+            setTimeout(() => document.getElementById('videoModalContent').classList.remove('scale-90'), 10);
+        }
+
+        function closeVideoModal() {
+            document.getElementById('videoModalContent').classList.add('scale-90');
+            setTimeout(() => {
+                document.getElementById('videoModal').classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            }, 300);
+        }
+
+        function openMotionModal(title) {
+            document.getElementById('motionModal').classList.remove('hidden');
+            document.getElementById('motionTitle').innerText = title;
+            document.body.classList.add('modal-open');
+            setTimeout(() => document.getElementById('motionModalContent').classList.remove('scale-95'), 10);
+        }
+
+        function closeMotionModal() {
+            document.getElementById('motionModalContent').classList.add('scale-95');
+            setTimeout(() => {
+                document.getElementById('motionModal').classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            }, 300);
+        }
+
+        // UTILITIES
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('translate-x-full');
+            menu.classList.toggle('translate-x-0');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.onscroll = () => {
+            const header = document.getElementById('main-header');
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            if(header) header.classList.toggle('py-2', window.scrollY > 50);
+            if(scrollBtn) scrollBtn.style.transform = window.scrollY > 500 ? 'scale(1)' : 'scale(0)';
+        };
+
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') document.body.classList.add('light-theme');
+            
+            const isLight = document.body.classList.contains('light-theme');
+            document.getElementById('theme-icon').setAttribute('data-lucide', isLight ? 'sun' : 'moon');
+            
+            const yearElem = document.getElementById('current-year');
+            if(yearElem) yearElem.innerText = new Date().getFullYear();
+            
+            lucide.createIcons();
+            AOS.init({ duration: 800, once: true });
+            renderPhotoGallery();
+            renderVideoGallery();
+            renderSongGallery();
+            
+            const counters = document.querySelectorAll('[data-target]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                let current = 0;
+                const update = () => {
+                    if (current < target) {
+                        current += Math.ceil(target / 40);
+                        counter.innerText = current;
+                        requestAnimationFrame(update);
+                    } else { counter.innerText = target + '+'; }
+                };
+                update();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeVideoModal();
+                    closeMotionModal();
+                    closePhotoModal();
+                    closeGenVideoPlayer();
+                    closeGenAudioPlayer();
+                }
+            });
+        };
+    </script>
+</body>
+</html>
